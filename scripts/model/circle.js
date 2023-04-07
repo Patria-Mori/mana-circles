@@ -23,7 +23,7 @@ class Circle {
         this.type = type;
     }
 
-    CATEGORY = {
+    static CATEGORY = {
         ELEMENT: "Element",
         MEDIUM: "Medium",
         SPEED: "Speed",
@@ -31,6 +31,20 @@ class Circle {
         GRAVITY: "Gravity",
         GOAL: "Goal",
         SPELL: "Spell"
+    }
+
+    /**
+     * Getter for the category of the circle.
+     */
+    get category() {
+        return this.category;
+    }
+
+    /**
+     * Getter for the type of the circle.
+     */
+    get type() {
+        return this.type;
     }
 
     /**
