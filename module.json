@@ -14,7 +14,10 @@
         "maximum": 11
     },
     "scripts": [
-        "scripts/circles.mjs"
+        "scripts/circles.mjs",
+        "scripts/model/circle.js",
+        "scripts/model/affinity.js",
+        "scripts/model/spell.js"
     ],
     "languages": [
         {
