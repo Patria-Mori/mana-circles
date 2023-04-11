@@ -14,7 +14,9 @@ class ManaCirclesModule {
 
     // The Handlebars templates used in the module.
     static TEMPLATES = {
-        ATTRIBUTE_PANE_UI: `modules/${this.ID}/templates/attribute-circle-ui.hbs`
+        ATTRIBUTE_PANE_UI:  `modules/${this.ID}/templates/attribute-circle-ui.hbs`,
+        CUSTOM_TAB_BUTTON:  `modules/${this.ID}/templates/custom-tab-button.hbs`,
+        CUSTOM_TAB_UI:      `modules/${this.ID}/templates/custom-tab-ui.hbs`
     }
 
     /**

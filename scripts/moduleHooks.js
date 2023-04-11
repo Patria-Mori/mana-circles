@@ -18,8 +18,26 @@ Hooks.on("init", async function () {
  */
 Hooks.on("renderActorSheet", async function (actorSheet, html, data) {
     
+    // Inject the custom tab button after the spellbook tab.
+    // TODO: The template needs to be able to retain the "active tab" state.
+    const customTabButtonRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_BUTTON);
+    const customTabButtonElem = htmlToElement(customTabButtonRender);
 
-    
+    const spellbookTabButtonElem = html[0].querySelector(".tidy5e-navigation .item[data-tab='spellbook']");
+    spellbookTabButtonElem.after(customTabButtonElem);
+
+    // Inject the custom tab UI after the spellbook tab.
+    const customTabUiData = CircleDefinitions.categoriesAndCircles();
+    const customTabUiRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_UI, customTabUiData);
+    const customTabUiElem = htmlToElement(customTabUiRender);
+
+    const spellbookTabElem = html[0].querySelector(".sheet-body .spellbook");
+    spellbookTabElem.after(customTabUiElem);
+    //ManaCirclesModule.log(true, customTabUiElem);
+
+    //const attributeLeftPaneDiv = html[0].querySelectorAll(".attributes .left-pane");
+    //const attributeTraitsDiv = html[0].querySelectorAll(".attributes .traits");
+    //attributeLeftPaneDiv[0].insertBefore(customTabUiHtml, attributeTraitsDiv[0]);
 
 });
 
@@ -41,7 +59,9 @@ function htmlToElement(html) {
  */
 async function preloadHandlebarsTemplates() {
     const templatePaths = [
-        ManaCirclesModule.TEMPLATES.ATTRIBUTE_PANE_UI
+        ManaCirclesModule.TEMPLATES.ATTRIBUTE_PANE_UI,
+        ManaCirclesModule.TEMPLATES.CUSTOM_TAB_BUTTON,
+        ManaCirclesModule.TEMPLATES.CUSTOM_TAB_UI
     ];
 
     return loadTemplates(templatePaths);

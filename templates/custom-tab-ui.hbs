@@ -1,0 +1,68 @@
+{{! This template defines the HTML UI that's inserted into the Sheet in a dedicated tab in Tidy5e.}}
+{{!It uses the following data:
+    - categories: an array of strings, each string is a cicle category name.}}
+<div class="tab circles" data-group="primary" data-tab="circles">
+    <div class="affinities">
+        <h2>Affinities</h2>
+        <ul class = "affinity-table">
+            {{#each this}}
+                <li class = "affinity-category">
+                    <h3>{{this.category}}</h3>
+                    <ul>
+                        {{#circles}}
+                            <li class = "affinity">
+                                <a class = "affinity-toggle">
+                                    <i class = "far fa-circle"></i>
+                                </a>
+                                <h4 class = "affinity-name">{{this.type}}</h4>
+                            </li>
+                        {{/circles}}
+                    </ul>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div>
+    <h3>Legend</h3>
+    <ul>
+        <li>
+            <i class = "far fa-circle"></i>
+            <span> - No Affinity</span>
+        </li>
+        <li>
+            <i class = "fa-solid fa-circle"></i>
+            <span> - Natural Affinity</span>
+        </li>
+        <li>
+            <i class = "fa-solid fa-circle-f"></i>
+            <span> - Focus Affinity</span>
+        </li>
+        <li>
+            <i class = "fa-solid fa-circle-g"></i>
+            <span> - Gear Affinity</span>
+        </li>
+        <li>
+            <i class = "fa-solid fa-circle-question"></i>
+            <span> - Other Affinity</span>
+        </li>
+        {{!These are other icons I may or may not use later on.
+        <li>
+            <span>Other Icon Candidates: </span>
+            <i class = "fa-solid fa-circle-xmark fa-2xl"></i>
+            <i class = "fa-solid fa-circle-user fa-2xl"></i>
+            <i class = "fa-solid fa-circle-up fa-2xl"></i>
+            <i class = "fa-solid fa-circle-half-stroke fa-2xl"></i>
+            <i class = "fa-solid fa-circle-exclamation fa-2xl"></i>
+            <i class = "fa-solid fa-circle-check fa-2xl"></i>
+            <i class = "fa-solid fa-circle-plus fa-2xl"></i>
+            <i class = "fa-solid fa-circle-play fa-2xl"></i>
+            <i class = "fa-solid fa-circle-heart fa-2xl"></i>
+            <i class = "fa-solid fa-circle-chevron-up fa-2xl"></i>
+            <i class = "fa-solid fa-circle-caret-up fa-2xl"></i>
+            <i class = "fa-solid fa-circle-bolt fa-2xl"></i>
+            <i class = "fa-solid fa-circle-star fa-2xl"></i>
+            <i class = "fa-solid fa-circle-book-open fa-2xl"></i>
+        </li>
+    </ul> }}
+</div>
+</div>

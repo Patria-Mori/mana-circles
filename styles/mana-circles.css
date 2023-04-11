@@ -1,0 +1,53 @@
+.attribute-circle-ui {
+    width: 100%;
+    margin: 8px 0 17px 0;
+    display: flex;
+}
+
+.circle-affinities {
+    display: flex;
+    flex-direction: column;
+}
+
+.circle-affinity {
+    display: flex;
+}
+
+.affinity-table {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.affinity-category {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+
+.affinity {
+    display: flex;
+    font-size: 14px;
+    line-height: 16px;
+    height: 20px;
+    flex: 0 0 18px;
+}
+
+.affinity-toggle {
+    width: 18px;
+    height: 18px;
+    margin: 1px;
+}
+
+.affinity-name {
+    flex: 1;
+}
+
+
+.affinities .affinity-table .affinity-category .affinity h4 {
+    margin: 0 2px;
+    font-weight: 400;
+}

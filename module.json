@@ -14,12 +14,14 @@
         "maximum": 11
     },
     "scripts": [
-        "scripts/circles.mjs",
         "scripts/moduleConfig.js",
         "scripts/moduleHooks.js",
+        "scripts/api/spellApi.js",
         "scripts/model/circle.js",
         "scripts/model/affinity.js",
-        "scripts/model/spell.js"
+        "scripts/model/spell.js",
+        "scripts/definitions/circleDef.js",
+        "scripts/definitions/spellDef.js"
     ],
     "languages": [
         {
