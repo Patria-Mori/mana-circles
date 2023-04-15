@@ -7,11 +7,37 @@
         <ul class = "affinity-table">
             {{#each this}}
                 <li class = "affinity-category">
-                    <h3>{{this.category}}</h3>
                     <ul>
+                        <li>
+                            <span class = "affinity-category-header">
+                                <span class = "affinity-icon">
+                                    <i class = "fa-solid fa-circle-n"></i>
+                                </span>
+                                <span class = "affinity-icon">
+                                    <i class = "fa-solid fa-circle-f"></i>
+                                </span>
+                                <span class = "affinity-icon">
+                                    <i class = "fa-solid fa-circle-g"></i>
+                                </span>
+                                <span class = "affinity-icon">
+                                    <i class = "fa-solid fa-circle-question"></i>
+                                </span>
+                                <h3>{{this.category}}</h3>
+                            </span>
+                            
+                        </li>
                         {{#circles}}
                             <li class = "affinity">
-                                <a class = "affinity-toggle">
+                                <a class = "affinity-icon">
+                                    <i class = "far fa-circle"></i>
+                                </a>
+                                <a class = "affinity-icon">
+                                    <i class = "far fa-circle"></i>
+                                </a>
+                                <a class = "affinity-icon">
+                                    <i class = "far fa-circle"></i>
+                                </a>
+                                <a class = "affinity-icon">
                                     <i class = "far fa-circle"></i>
                                 </a>
                                 <h4 class = "affinity-name">{{this.type}}</h4>
@@ -30,7 +56,7 @@
             <span> - No Affinity</span>
         </li>
         <li>
-            <i class = "fa-solid fa-circle"></i>
+            <i class = "fa-solid fa-circle-n"></i>
             <span> - Natural Affinity</span>
         </li>
         <li>

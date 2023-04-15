@@ -19,9 +19,11 @@
         "scripts/api/spellApi.js",
         "scripts/model/circle.js",
         "scripts/model/affinity.js",
+        "scripts/model/affinitySet.js",
         "scripts/model/spell.js",
         "scripts/definitions/circleDef.js",
-        "scripts/definitions/spellDef.js"
+        "scripts/definitions/spellDef.js",
+        "scripts/utils/affinityUtils.js"
     ],
     "languages": [
         {
