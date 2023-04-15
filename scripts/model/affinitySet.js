@@ -27,11 +27,11 @@ class AffinitySet {
         return ManaFlagUtils.getActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.AFFINITY_SET);
     }
 
-    static createAffinitySet(actorId, affinitySet) {
+    static setAffinitySet(actorId, affinitySet) {
         return ManaFlagUtils.setActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.AFFINITY_SET, affinitySet);
     }
 
-    static deleteAffinitySet(actorId) {
+    static unsetAffinitySet(actorId) {
         return ManaFlagUtils.unsetActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.AFFINITY_SET);
     }
 

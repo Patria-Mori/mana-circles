@@ -46,6 +46,14 @@
     margin: 0px;
 }
 
+.affinity .affinity-icon {
+    color: var(--t5e-primary-color)
+}
+
+.affinity-icon:hover {
+    color: var(--t5e-primary-accent);
+}
+
 .affinity-name {
     flex: 1;
 }

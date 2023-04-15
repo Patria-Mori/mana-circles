@@ -28,17 +28,33 @@
                         </li>
                         {{#circles}}
                             <li class = "affinity">
-                                <a class = "affinity-icon">
+                                <a id = "affinity-{{this.id}}-natural" class = "affinity-icon">
+                                    {{#if this.affinities.natural}}
+                                    <i class = "fas fa-circle"></i>
+                                    {{else}}
                                     <i class = "far fa-circle"></i>
+                                    {{/if}}
                                 </a>
-                                <a class = "affinity-icon">
+                                <a id = "affinity-{{this.id}}-focus" class = "affinity-icon">
+                                    {{#if this.affinities.focus}}
+                                    <i class = "fas fa-circle"></i>
+                                    {{else}}
                                     <i class = "far fa-circle"></i>
+                                    {{/if}}
                                 </a>
-                                <a class = "affinity-icon">
+                                <a id = "affinity-{{this.id}}-gear" class = "affinity-icon">
+                                    {{#if this.affinities.gear}}
+                                    <i class = "fas fa-circle"></i>
+                                    {{else}}
                                     <i class = "far fa-circle"></i>
+                                    {{/if}}
                                 </a>
-                                <a class = "affinity-icon">
+                                <a id = "affinity-{{this.id}}-other" class = "affinity-icon">
+                                    {{#if this.affinities.other}}
+                                    <i class = "fas fa-circle"></i>
+                                    {{else}}
                                     <i class = "far fa-circle"></i>
+                                    {{/if}}
                                 </a>
                                 <h4 class = "affinity-name">{{this.type}}</h4>
                             </li>
