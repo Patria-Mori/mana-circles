@@ -31,6 +31,17 @@ class AffinitySet {
         return ManaFlagUtils.setActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.AFFINITY_SET, affinitySet);
     }
 
+    /**
+     * Updates the affinity set of an actor. 
+     * Removes the old affinity set and sets the new one.
+     * @param {String} actorId  The id of the actor.
+     * @param {*} affinitySet   The new affinity set.
+     */
+    static updateAffinitySet(actorId, affinitySet) {
+        this.unsetAffinitySet(actorId);
+        this.setAffinitySet(actorId, affinitySet);
+    }
+
     static unsetAffinitySet(actorId) {
         return ManaFlagUtils.unsetActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.AFFINITY_SET);
     }

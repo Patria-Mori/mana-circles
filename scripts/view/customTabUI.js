@@ -27,9 +27,6 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
     const spellbookTabElem = html[0].querySelector(".sheet-body .spellbook");
     spellbookTabElem.after(customTabUiElem);
     
-
-    // TODO: BELOW HERE BE DRAGONS
-    ManaCirclesModule.log(true, customTabUiData);
     // Iterate over the custom tab UI data Categories and add the appropriate event listeners.
     for (category of customTabUiData) {
 
@@ -38,22 +35,22 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
             
             const circleNaturalIconElem = html[0].querySelector(`#affinity-${circleId}-natural`);
             circleNaturalIconElem.addEventListener("click", function (event) {
-                ManaCirclesModule.log(true, `Clicked on natural circle button ${circleId}`);
+                updateAffinitySet(actorId, circleId, Affinity.ORIGIN.NATURAL)
             });
 
             const circleFocusIconElem = html[0].querySelector(`#affinity-${circleId}-focus`);
             circleFocusIconElem.addEventListener("click", function (event) {
-                ManaCirclesModule.log(true, `Clicked on focus circle button ${circleId}`);
+                updateAffinitySet(actorId, circleId, Affinity.ORIGIN.FOCUS)
             });
 
             const circleGearIconElem = html[0].querySelector(`#affinity-${circleId}-gear`);
             circleGearIconElem.addEventListener("click", function (event) {
-                ManaCirclesModule.log(true, `Clicked on gear circle button ${circleId}`);
+                updateAffinitySet(actorId, circleId, Affinity.ORIGIN.GEAR)
             });
 
             const circleOtherIconElem = html[0].querySelector(`#affinity-${circleId}-other`);
             circleOtherIconElem.addEventListener("click", function (event) {
-                ManaCirclesModule.log(true, `Clicked on other circle button ${circleId}`);
+                updateAffinitySet(actorId, circleId, Affinity.ORIGIN.OTHER)
             });
         }
     }
@@ -121,6 +118,10 @@ function mergeCircleAndAffinity(circle, affinities) {
         }
     }
 
+    if (affinities === undefined) {
+        return mergedCircleObject; // If there are no affinities, we return the merged circle object (with all affinities set to false)
+    }
+    
     // We iterate over the affinities to match them with the circle.
     for (affinity of affinities) {
         // If the affinity matches the circle, we add the appropriate property to the merged circle object.

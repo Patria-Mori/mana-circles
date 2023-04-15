@@ -120,4 +120,20 @@ class CircleDefinitions {
         ];
     } 
 
+    /**
+     * Finds the circle with the given id and returns it.
+     * @param {number} id The id of the circle to return. 
+     * @returns {Circle} The circle with the given id, or null if no circle with the given id exists.
+     */
+    static getCircleFromId(id) {
+        for (let category of this.categoriesAndCircles()) {
+            for (let circle of category.circles) {
+                if (circle.id == id) {
+                    return circle;
+                }
+            }
+        }
+        return null;
+    }
+
 }
