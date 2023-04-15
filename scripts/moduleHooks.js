@@ -1,8 +1,31 @@
+// This section contains all the used hooks and their callbacks.
+/**
+ * This hook is called by the DevMode module when it is ready.
+ */
+Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
+    // Registers the module's debug flag with the dev mode module if it is installed.
+    registerPackageDebugFlag(ManaCirclesModule.ID);
+});
+
+
 /**
  * A hook event that fires as Foundry is initializing, right before any initialization tasks have begun.
  */
 Hooks.on("init", async function () {
     preloadHandlebarsTemplates();
+});
+
+/**
+ * A hook event that fires for every embedded Document type after conclusion of a creation workflow. 
+ * Substitute the Document name in the hook event to target a specific type, for example "createToken". 
+ * This hook fires for all connected clients after the creation has been processed.
+ * 
+ * @param {Document} document - The new Document instance which has been created.
+ * @param {DocumentModificationContext} options - Additional options which modified the creation request.
+ * @param {string} userId - The ID of the User who triggered the creation workflow
+ */
+Hooks.on("createActor", async function (document, options, userId) {
+    initModuleActorFlags(document);
 });
 
 /**

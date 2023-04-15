@@ -24,6 +24,7 @@
         "scripts/definitions/circleDef.js",
         "scripts/definitions/spellDef.js",
         "scripts/utils/affinityUtils.js",
+        "scripts/utils/moduleUtils.js",
         "scripts/view/customTabUI.js"
     ],
     "languages": [

@@ -9,7 +9,9 @@ class ManaCirclesModule {
 
     // The flags used in the module.
     static FLAGS = {
-        AFFINITY_SET:   'affinity-set',
+        AFFINITY_SET:       "affinity-set",
+        LAST_ACTIVE_TAB:    "_last-active-tab",
+        MODULE_VERSION:     "_module-version"
     }
 
     // The Handlebars templates used in the module.

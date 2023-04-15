@@ -6,11 +6,15 @@
  * @param {jQuery} html - The inner HTML of the document that will be displayed and may be modified.
  */
 async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
+    //ManaCirclesModule.log(true, html[0].querySelector(".tidy5e-navigation"));
     const actorId = actorSheet.object._id;
     
     // Inject the custom tab button after the spellbook tab.
     // TODO: The template needs to be able to retain the "active tab" state.
-    const customTabButtonRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_BUTTON);
+    const customTabButtonData = {
+        navLinkState: "item"
+    };
+    const customTabButtonRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_BUTTON, customTabButtonData);
     const customTabButtonElem = htmlToElement(customTabButtonRender);
 
     const spellbookTabButtonElem = html[0].querySelector(".tidy5e-navigation .item[data-tab='spellbook']");
@@ -20,7 +24,8 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
     const circleDefs = CircleDefinitions.categoriesAndCircles();
     const actorAffinities = AffinitySet.getAffinitySet(actorId);
 
-    const customTabUiData = mergeAffinitiesAndCircles(circleDefs, actorAffinities);
+    let customTabUiData = mergeAffinitiesAndCircles(circleDefs, actorAffinities);
+    customTabUiData.outerDivClass = "tab circles";
     const customTabUiRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_UI, customTabUiData);
     const customTabUiElem = htmlToElement(customTabUiRender);
 

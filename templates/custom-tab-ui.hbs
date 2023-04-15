@@ -1,7 +1,8 @@
 {{! This template defines the HTML UI that's inserted into the Sheet in a dedicated tab in Tidy5e.}}
 {{!It uses the following data:
+    - outerDivClass: a string, the class of the outermost div. This is used to identify the tab in the CSS.
     - categories: an array of strings, each string is a cicle category name.}}
-<div class="tab circles" data-group="primary" data-tab="circles">
+<div class="{{outerDivClass}}" data-group="primary" data-tab="circles">
     <div class="affinities">
         <h2>Affinities</h2>
         <ul class = "affinity-table">
