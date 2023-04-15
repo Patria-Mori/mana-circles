@@ -40,8 +40,23 @@ Hooks.on("createActor", async function (document, options, userId) {
  * @param {object} data - The object of data used when rendering the application
  */
 Hooks.on("renderActorSheet", async function (actorSheet, html, data) {
+    injectEventListenersInNavBar(actorSheet, html);
     injectCirclesTabUiIntoActorSheet(actorSheet, html);
 });
+
+/**
+ * Adds click event listeners to the navigation bar in the actor sheet.
+ * @param {Application} actorSheet - The Application instance being rendered.
+ * @param {jQuery} html - The inner HTML of the document that will be displayed and may be modified.
+ */
+function injectEventListenersInNavBar(actorSheet, html) {
+    const navElems = html[0].querySelectorAll(".tidy5e-navigation .item");
+    for (navElem of navElems) {
+        navElem.addEventListener("click", function (event) {
+            ManaFlagUtils.setActorFlag(actorSheet.actor.id, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.LAST_ACTIVE_TAB, event.target.dataset.tab);
+        });
+    }
+}
 
 /**
  * Utility function to convert a string of HTML code to an element.

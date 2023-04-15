@@ -18,7 +18,7 @@ function toggleAffinityInSet(actorId, circleId, origin) {
         // We iterate over the affinities to check if the affinity is already in the set.
         for (affinity of oldAffinities) {
             if (affinity.circle.id === circleId && affinity.origin === origin) {
-                newAffinities = oldAffinities.filter(affinity => affinity.circle.id !== circleId || affinity.origin !== origin);
+                const newAffinities = oldAffinities.filter(affinity => affinity.circle.id !== circleId || affinity.origin !== origin);
                 // Since we found the affinity, we remove it from the set and return the new set.
                 return newAffinities;
             }

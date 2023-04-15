@@ -6,26 +6,30 @@
  * @param {jQuery} html - The inner HTML of the document that will be displayed and may be modified.
  */
 async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
-    //ManaCirclesModule.log(true, html[0].querySelector(".tidy5e-navigation"));
-    const actorId = actorSheet.object._id;
+    const actorId = actorSheet.object._id; // The actor ID is the same as the actor document ID.
+
+    // Strip the active nav and tab classes from the last active tab if was not the circles tab.
+    const circlesIsActiveTab = stripActiveTab(actorId, html);
     
-    // Inject the custom tab button after the spellbook tab.
-    // TODO: The template needs to be able to retain the "active tab" state.
-    const customTabButtonData = {
-        navLinkState: "item"
-    };
+    // Inject the custom tab button after the spellbook tab button.
+    // The data defines whether the custom tab button should be active or not.
+    const customTabButtonData = {navLinkState: circlesIsActiveTab ? "item active" : "item"};
     const customTabButtonRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_BUTTON, customTabButtonData);
     const customTabButtonElem = htmlToElement(customTabButtonRender);
 
+    // Add an event listener to the custom tab button to set the last active tab flag to "circles".
     const spellbookTabButtonElem = html[0].querySelector(".tidy5e-navigation .item[data-tab='spellbook']");
     spellbookTabButtonElem.after(customTabButtonElem);
+    customTabButtonElem.addEventListener("click", function (event) { 
+        ManaFlagUtils.setActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.LAST_ACTIVE_TAB, "circles");
+    });
 
     // Inject the custom tab UI after the spellbook tab.
     const circleDefs = CircleDefinitions.categoriesAndCircles();
     const actorAffinities = AffinitySet.getAffinitySet(actorId);
 
     let customTabUiData = mergeAffinitiesAndCircles(circleDefs, actorAffinities);
-    customTabUiData.outerDivClass = "tab circles";
+    customTabUiData.outerDivClass = circlesIsActiveTab ? "tab circles active" : "tab circles";
     const customTabUiRender = await renderTemplate(ManaCirclesModule.TEMPLATES.CUSTOM_TAB_UI, customTabUiData);
     const customTabUiElem = htmlToElement(customTabUiRender);
 
@@ -45,6 +49,7 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
 
             const circleFocusIconElem = html[0].querySelector(`#affinity-${circleId}-focus`);
             circleFocusIconElem.addEventListener("click", function (event) {
+                console.log("focus clicked");
                 updateAffinitySet(actorId, circleId, Affinity.ORIGIN.FOCUS)
             });
 
@@ -59,7 +64,33 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
             });
         }
     }
+}
 
+/**
+ * This function is called when the actor sheet is rendered. 
+ * It is responsible for stripping the active tab from the actor sheet if the last active tab was the circles tab.
+ * This is necessary to integrate with the tidy5e module.
+ * @param {string} actorId  - The ID of the actor. 
+ * @param {*} html - The inner HTML of the document that will be displayed and may be modified.
+ * @returns {boolean} - Returns true if the circles tab was the last active tab, otherwise false.q
+ */
+function stripActiveTab(actorId, html) {
+    const lastActiveTab = ManaFlagUtils.getActorFlag(actorId, ManaCirclesModule.ID, ManaCirclesModule.FLAGS.LAST_ACTIVE_TAB);
+    if (lastActiveTab !== "circles") {
+        // The last active tab was not the circles tab, so we don't need to strip the active tab.
+        return false;
+    } else { 
+        // The last active tab was the circles tab, so we need to strip the active tab.
+        // This strips the active class from the tidy5e nav element that is active.
+        const activeNavElem = html[0].querySelector(".tidy5e-navigation .item.active");
+        activeNavElem.classList.remove("active");
+
+        // This strips the active class from the tidy5e tab element that is active.
+        const activeTabElem = html[0].querySelector(".sheet-body .tab.active");
+        activeTabElem.classList.remove("active");
+
+        return true;
+    }
 }
 
 /**
