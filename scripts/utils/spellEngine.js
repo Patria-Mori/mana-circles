@@ -13,7 +13,7 @@ class SpellEngine {
         // Find the number of affinities that are used in the spell.
         let numApplicableAffinities = 0;
         for (let circle of spell.circles) {
-            for (let affinity of affinitySet.affinities) {
+            for (let affinity of affinitySet) {
                 if (circle.id === affinity.circle.id) {
                     numApplicableAffinities++;
                     break;
