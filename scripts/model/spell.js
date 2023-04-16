@@ -20,13 +20,14 @@ class Spell {
     /**
      * Creates an instance of Spell.
      * @param {number} baseLvl      The base level of the spell, i.e. the level the spell is cast at.
-     * @param {number} castLvl      The casting level of the spell, i.e. the level the spell is cast at.
+     * @param {number} castLvl      The casting level of the spell, i.e. the level the spell is cast at. 
+     *                              This cannot be lower than the base level.
      * @param {Circle[]} circles    The circles of the spell, i.e. the circles the spell consists of.
      * @param {boolean} isReaction  Whether the spell is cast using a reaction or not.
      */
     constructor(baseLvl, castLvl, circles, isReaction) {
         this.baseLvl = baseLvl;
-        this.castLvl = castLvl;
+        this.castLvl = Math.max(baseLvl, castLvl);
         this.circles = circles;
         this.isReaction = isReaction;
     }
