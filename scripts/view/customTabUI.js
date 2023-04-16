@@ -6,6 +6,10 @@
  * @param {jQuery} html - The inner HTML of the document that will be displayed and may be modified.
  */
 async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
+    if (!game.settings.get(ManaCirclesModule.ID, "clientShowCircles")) {
+        return;
+    }
+
     const actorId = actorSheet.object._id; // The actor ID is the same as the actor document ID.
 
     // Strip the active nav and tab classes from the last active tab if was not the circles tab.

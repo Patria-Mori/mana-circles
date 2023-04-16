@@ -2,6 +2,16 @@
 
 The mana circles module is part of the PM Mana Foundry module project, and adds onto mana-base to implement support for circles and affinities. It requires and builds on top of the mana-base module.
 
+## Installation
+
+To install this module:
+1. Inside the Foundry "Configuration and Setup" screen, click "Add-on Modules"
+2. Click "Install Module"
+3. In the "Manifest URL" field, paste the following url:
+`https://raw.githubusercontent.com/Patria-Mori/mana-circles/main/module.json`
+4. Click 'Install' and wait for installation to complete
+5. Don't forget to enable the module in game using the "Manage Module" button
+
 ## Main Features
 
 The module has a few main features, but in general it can be thought of as an extension to the mana-base module that similarly to the base mod mainly extends the "foundation" from the base mod without providing too much functionality itself.
@@ -14,3 +24,15 @@ The module has a few main features, but in general it can be thought of as an ex
 A key takeaway from this is that while this module extends the basic model and provides *some* useful user-facing funtionality, it doesn't provide much actual automation alone, other modules will have to do that.
 
 A general goal of this module, along with the subsequent "mana-spells" (name might change) module is to not only provide useful automation in foundry, but hopefully make the use of external tools like spreadsheets redundant. Input from users on how to improve is highly valued. 
+
+## Module code structure
+
+The module consists of several scripts and sub-folders inside the "scripts" folder. This briefly describes them.
+ - **api**: Consists of scripts that are intended to be used in the API (in the future).
+ - **definitions:** Consists of scripts that define the rules of circles, spells, and affinites.
+ - **model**: Defines the relevant models in the mod.
+ - **utils**: Several very useful utility classes, some of which will probably be turned into APIs.
+- **view**: Stores scripts responsible for the UI.
+- **moduleConfig.js**: Contains the configuration of the module.
+- **moduleHooks.js**: Simple script that adds event listener hooks for the module.
+- **moduleSettings.js**: Defines the settings for the module.

@@ -12,7 +12,16 @@ Hooks.once('devModeReady', ({ registerPackageDebugFlag }) => {
  * A hook event that fires as Foundry is initializing, right before any initialization tasks have begun.
  */
 Hooks.on("init", async function () {
+    registerCirclesModuleSettings();
     preloadHandlebarsTemplates();
+});
+
+/**
+ * A hook event that fires when the game is fully ready.
+ * Useful when you need the game data to be fully initialised.
+ */
+Hooks.on("ready", async function () {
+    updateDataModels();
 });
 
 /**
@@ -25,7 +34,7 @@ Hooks.on("init", async function () {
  * @param {string} userId - The ID of the User who triggered the creation workflow
  */
 Hooks.on("createActor", async function (document, options, userId) {
-    initModuleActorFlags(document);
+    initModuleActorFlags(document._id);
 });
 
 /**

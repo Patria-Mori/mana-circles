@@ -10,6 +10,11 @@ class SpellEngine {
         const maxCost = spellMaxCost(spell.castLvl);
         const circleCost = spellCircleCost(spell.castLvl);
 
+        // If the spell is a reaction, the cost is always the maximum cost.
+        if (spell.isReaction) {
+            return maxCost;
+        }
+
         // Find the number of affinities that are used in the spell.
         let numApplicableAffinities = 0;
         for (let circle of spell.circles) {

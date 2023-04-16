@@ -4,7 +4,7 @@
     "description": "This module extends the mana-base module by adding support for circles and affinities.",
     "authors": [
         {
-            "name": "Jonas"
+            "name": "Jonas Drageset Lindaas"
         }
     ],
     "version": "0.1.0",
@@ -16,6 +16,7 @@
     "scripts": [
         "scripts/moduleConfig.js",
         "scripts/moduleHooks.js",
+        "scripts/moduleSettings.js",
         "scripts/api/spellApi.js",
         "scripts/model/circle.js",
         "scripts/model/affinity.js",
@@ -26,6 +27,7 @@
         "scripts/utils/affinityUtils.js",
         "scripts/utils/moduleUtils.js",
         "scripts/utils/spellEngine.js",
+        "scripts/utils/updateUtils.js",
         "scripts/view/customTabUI.js"
     ],
     "languages": [
@@ -39,6 +41,8 @@
         "styles/mana-circles.css"
     ],
     "url": "https://github.com/Patria-Mori/mana-circles",
+    "manifest": "https://raw.githubusercontent.com/Patria-Mori/mana-circles/main/module.json",
+    "download": "https://github.com/Patria-Mori/mana-circles/releases/download/v0.1.0/module.zip",
     "relationships": {
         "systems": [
             {
@@ -57,7 +61,7 @@
                 "type": "module",
                 "manifest": "https://raw.githubusercontent.com/Patria-Mori/mana-base/master/module.json",
                 "compatibility": {
-                    "verified": "0.1.1"
+                    "verified": "0.2.0"
                 }
             }
         ]
