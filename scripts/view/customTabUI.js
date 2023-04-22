@@ -29,7 +29,7 @@ async function injectCirclesTabUiIntoActorSheet(actorSheet, html) {
     });
 
     // Inject the custom tab UI after the spellbook tab.
-    const circleDefs = CircleDefinitions.categoriesAndCircles();
+    const circleDefs = CircleDefinitions.categoriesAndCirclesWithoutSpecials();
     const actorAffinities = AffinitySet.getAffinitySet(actorId);
 
     let customTabUiData = mergeAffinitiesAndCircles(circleDefs, actorAffinities);

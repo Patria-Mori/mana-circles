@@ -33,3 +33,7 @@ The alpha release is quite simple.
    - castLvl : number
    - circles : Circle[]
    - isReaction : boolean
+
+### v0.1.1
+
+No changes.

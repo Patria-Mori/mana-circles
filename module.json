@@ -7,7 +7,7 @@
             "name": "Jonas Drageset Lindaas"
         }
     ],
-    "version": "0.1.0",
+    "version": "0.1.1",
     "compatibility": {
         "minimum": 10,
         "verified": 10,
@@ -42,7 +42,7 @@
     ],
     "url": "https://github.com/Patria-Mori/mana-circles",
     "manifest": "https://raw.githubusercontent.com/Patria-Mori/mana-circles/main/module.json",
-    "download": "https://github.com/Patria-Mori/mana-circles/releases/download/v0.1.0/module.zip",
+    "download": "https://github.com/Patria-Mori/mana-circles/releases/download/v0.1.1/module.zip",
     "relationships": {
         "systems": [
             {
@@ -61,7 +61,7 @@
                 "type": "module",
                 "manifest": "https://raw.githubusercontent.com/Patria-Mori/mana-base/master/module.json",
                 "compatibility": {
-                    "verified": "0.2.0"
+                    "verified": "0.2.1"
                 }
             }
         ]

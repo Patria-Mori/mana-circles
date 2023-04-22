@@ -103,7 +103,8 @@ class CircleDefinitions {
     }
     
     // Special Circles (Goal & Spell)
-    static goalCircle        = new Circle(46, Circle.CATEGORY.GOAL, null);
+    static goalCircle        = new Circle(46, Circle.CATEGORY.GOAL, "Goal");
+    // TODO: Spell circles don't work yet at all
     static spellCircle       = new Circle(47, Circle.CATEGORY.SPELL, null);
     
     /**
@@ -116,7 +117,23 @@ class CircleDefinitions {
             {category: Circle.CATEGORY.MEDIUM, circles: this.mediumCircles()},
             {category: Circle.CATEGORY.SPEED, circles: this.speedCircles()},
             {category: Circle.CATEGORY.DURATION, circles: this.durationCircles()},
-            {category: Circle.CATEGORY.GRAVITY, circles: this.gravityCircles()}
+            {category: Circle.CATEGORY.GRAVITY, circles: this.gravityCircles()},
+            {category: Circle.CATEGORY.GOAL, circles: [this.goalCircle]},
+            {category: Circle.CATEGORY.SPELL, circles: [this.spellCircle]}
+        ];
+    } 
+
+    /**
+     * Returns an object containing all circles, categorized by their category, excluding special circles.
+     * @returns {Object} An object containing all circles, categorized by their category.
+     */
+    static categoriesAndCirclesWithoutSpecials() {
+        return [
+            {category: Circle.CATEGORY.ELEMENT, circles: this.elementCircles()},
+            {category: Circle.CATEGORY.MEDIUM, circles: this.mediumCircles()},
+            {category: Circle.CATEGORY.SPEED, circles: this.speedCircles()},
+            {category: Circle.CATEGORY.DURATION, circles: this.durationCircles()},
+            {category: Circle.CATEGORY.GRAVITY, circles: this.gravityCircles()},
         ];
     } 
 
@@ -134,6 +151,16 @@ class CircleDefinitions {
             }
         }
         return null;
+    }
+
+    static getCircleFromName(name) {
+        for (let category of this.categoriesAndCircles()) {
+            for (let circle of category.circles) {
+                if (circle.type == name) {
+                    return circle;
+                }
+            }
+        }
     }
 
 }
