@@ -16,6 +16,7 @@ class Spell {
     castLvl = 0;        // The casting level of the spell, i.e. the level the spell is cast at.
     circles = [];       // The circles of the spell, i.e. the circles the spell consists of.
     isReaction = false; // Whether the spell is cast using a reaction or not.
+    school = "":        // The spell's school of magic, i.e. "Divination"
 
     /**
      * Creates an instance of Spell.
@@ -24,12 +25,14 @@ class Spell {
      *                              This cannot be lower than the base level.
      * @param {Circle[]} circles    The circles of the spell, i.e. the circles the spell consists of.
      * @param {boolean} isReaction  Whether the spell is cast using a reaction or not.
+     * @property {string} school    Magical school to which this spell belongs.
      */
-    constructor(baseLvl, castLvl, circles, isReaction) {
+    constructor(baseLvl, castLvl, circles, isReaction, school) {
         this.baseLvl = baseLvl;
         this.castLvl = Math.max(baseLvl, castLvl);
         this.circles = circles;
         this.isReaction = isReaction;
+        this.school = school;
     }
 
     // Getters
@@ -48,5 +51,8 @@ class Spell {
     get isReaction() {
         return this.isReaction;
     }
+
+    get school() {
+        return this.school;
 
 }
