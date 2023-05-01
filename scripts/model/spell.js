@@ -16,7 +16,7 @@ class Spell {
     castLvl = 0;        // The casting level of the spell, i.e. the level the spell is cast at.
     circles = [];       // The circles of the spell, i.e. the circles the spell consists of.
     isReaction = false; // Whether the spell is cast using a reaction or not.
-    school = "":        // The spell's school of magic, i.e. "Divination"
+    school = "";        // The spell's school of magic, i.e. "Divination"
 
     /**
      * Creates an instance of Spell.
@@ -54,5 +54,5 @@ class Spell {
 
     get school() {
         return this.school;
-
+    }
 }

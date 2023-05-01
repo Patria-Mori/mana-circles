@@ -16,7 +16,7 @@ class SpellApi {
         }
 
         const affinitySet = AffinitySet.getAffinitySet(actorId);
-        return SpellEngine.getSpellCost(spell, affinitySet);
+        return SpellEngine.getSpellCost(spell, actorId, affinitySet);
     }
 
     /**
