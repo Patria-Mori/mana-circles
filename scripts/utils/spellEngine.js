@@ -14,7 +14,12 @@ class SpellEngine {
         if (spell.isReaction) {
             return maxCost;
         }
-
+        
+        //TODO Check if school is Divination, then check for Expert Divination, then return unique mana cost.
+        if (spell.school == "Divination") {
+               
+        }
+        
         // Find the number of affinities that are used in the spell.
         let numApplicableAffinities = 0;
         for (let circle of spell.circles) {
