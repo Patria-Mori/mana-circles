@@ -3,18 +3,20 @@ class SpellEngine {
     /**
      * This method takes in a spell and determines the cost of casting it.
      * @param {Spell} spell The spell to determine the cost of.
+     * @param {string} actorId The ID of the actor we look for.
      * @param {AffinitySet} affinitySet The affinity set to use when determining the cost of the spell.
      * @returns {number} The cost of casting the spell.
      */
-    static getSpellCost(spell, affinitySet) {
+    static getSpellCost(spell, actorId, affinitySet) {
         const maxCost = spellMaxCost(spell.castLvl);
         const circleCost = spellCircleCost(spell.castLvl);
+        let charObj = game.actors.get(actorId);
 
         // If the spell is a reaction, the cost is always the maximum cost.
         if (spell.isReaction) {
             return maxCost;
         }
-
+        
         // Find the number of affinities that are used in the spell.
         let numApplicableAffinities = 0;
         for (let circle of spell.circles) {
@@ -24,6 +26,15 @@ class SpellEngine {
                     break;
                 }
             }
+        }
+
+        // Check if spell is of Divination school of magic
+        if (spell.school === "Divination") {
+            // Check if Actor has Expert Divination feature
+            if (charObj.items.find(i => i.name === "Expert Divination")) {
+                // Formula for Expert Divination casting
+                return (2*spell.castLvl) + 2 - numApplicableAffinities;
+               }
         }
 
         return maxCost - (circleCost * numApplicableAffinities);
